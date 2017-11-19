@@ -1,0 +1,32 @@
+{
+	"description": "Adds a browser action to the toolbar. Click it to start painting ont he web page.",
+	"manifest_version": 2,
+	"name": "PaintWeb",
+	"version": "1",
+
+	"icons":{
+		"48": "icons/icon.png"
+	},
+	"content_scripts": [
+    {
+      "matches": ["https://*/"],
+      "js": ["content_scripts/WebPaint.js"]
+    }
+  ],
+	"applications": {
+		"gecko":{
+			"id": "{a8ef2ff9-7ad4-488d-924a-d8f2d5685f75}"
+		}
+	},
+	"permissions": [
+		"activeTab",
+		"http://*/",
+		"storage"
+		],
+
+	"browser_action":{
+		"default_icon": "icons/icon.ico",
+		"default_title": "WebPaint",
+		"default_popup": "popup/WebPaint.html"
+	}
+}
