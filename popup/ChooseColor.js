@@ -1,10 +1,12 @@
-//tabs: A collection that has the tab ids
+//param tabs A collection that has the tab ids
 function listenForClicks(tabs) {
 	var isPaintEnabled;
+	//Sets the active tab
 	var tab = tabs[0].id;
 	var color;
 	var reset = false;
 
+	//Restore options selected that are saved in local storage.
 	restoreOptions();
 
 	document.getElementById("yes").addEventListener("click",enablePaint);
@@ -19,6 +21,7 @@ function listenForClicks(tabs) {
 		enablePaint()
 	});
 
+	//Assigns the chosen color.
 	function selectColor(){
 		if(document.getElementById("yellow").checked){
 			color = "Yellow";
@@ -32,9 +35,11 @@ function listenForClicks(tabs) {
 		enablePaint();
 	}
 
+	//Builds and sends the message to the content script to enable/disable painting.
 	function enablePaint(){
 		var yes = document.getElementById("yes");
 		var message;
+
 		if(yes.checked){
 			message = "Enable";
 			isPaintEnabled = true;
@@ -43,7 +48,9 @@ function listenForClicks(tabs) {
 			message = "Disable";
 			isPaintEnabled = false;
 		}
+
 		saveOptions();
+
 		browser.tabs.sendMessage(tab, {
 			"message": message,
 			"color": color,
@@ -52,6 +59,7 @@ function listenForClicks(tabs) {
 		reset = false;
 	}
 
+	//Saves the options selected.
 	function saveOptions(){
 		browser.storage.local.set({
 			PaintEnabled: isPaintEnabled,
@@ -59,6 +67,8 @@ function listenForClicks(tabs) {
 		});
 	}
 
+	//Selects the options in the popup that are stored in memory.
+	//Default is "No" checked and "Black" checked.
 	function restoreOptions(){
 		browser.storage.local.get('PaintEnabled').then(item=>{
 			if(item.PaintEnabled){
