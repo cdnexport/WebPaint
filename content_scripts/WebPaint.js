@@ -64,7 +64,7 @@ function mouseMoveHandler(e){
 }
 
 //Initiates the entire canvas process. 
-function enablePaint(){
+function applyCanvas(){
 	if(reset){
 		document.getElementsByTagName('body')[0].removeChild(document.getElementById("WebPaintCanvas"));
 		oldCanvas = null;
@@ -102,7 +102,7 @@ function listener(mail){
 		isPaintEnabled = true;
 		color = mail.color;
 		reset = mail.reset;
-		enablePaint();
+		applyCanvas();
 	}
 	else{
 		isPaintEnabled = false;

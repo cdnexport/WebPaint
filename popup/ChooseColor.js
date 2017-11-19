@@ -35,7 +35,6 @@ function listenForClicks(tabs) {
 	function enablePaint(){
 		var yes = document.getElementById("yes");
 		var message;
-
 		if(yes.checked){
 			message = "Enable";
 			isPaintEnabled = true;
