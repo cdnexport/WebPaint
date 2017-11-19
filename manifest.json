@@ -25,7 +25,7 @@
 		],
 
 	"browser_action":{
-		"default_icon": "icons/icon.ico",
+		"default_icon": "icons/icon.png",
 		"default_title": "WebPaint",
 		"default_popup": "popup/WebPaint.html"
 	}
