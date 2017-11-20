@@ -20,16 +20,15 @@
 
 	//Places the canvas element on the screen.
 	function createCanvas(){
-		var w = window,
-		    d = document,
-		    e = d.documentElement,
-		    g = d.getElementsByTagName('body')[0],
-		    x = w.innerWidth || e.clientWidth || g.clientWidth,
-		    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-
 		var canvas = document.createElement("canvas");
-		canvas.width = x;
-		canvas.height = y;
+
+		var height = window.getComputedStyle(document.getElementsByTagName('html')[0],null).getPropertyValue("Height");
+		var heightValue = computePageSize(height);
+		var width = window.getComputedStyle(document.getElementsByTagName('html')[0],null).getPropertyValue("Width");
+		var widthValue = computePageSize(width);
+
+		canvas.width = widthValue;
+		canvas.height = heightValue;
 		canvas.id = "WebPaintCanvas";
 		canvas.style.border = "1px solid #000000";
 		canvas.style.position = "absolute";
@@ -40,6 +39,16 @@
 
 		oldCanvas = canvas;
 		ctx = canvas.getContext("2d");
+	}
+
+	//Turns the string into an integer.
+	//param property The string of the window size. Ends in "px".
+	function computePageSize(property){
+		var value = "";
+		for (var i = 0; i < property.length-2; i++) {
+			value += property[i];
+		}
+		return parseInt(value);
 	}
 
 	//Occurs when a mouse button is pressed
@@ -59,8 +68,8 @@
 			ctx.moveTo(mouseX,mouseY);
 		}
 		if(mousedown){
-			var mouseX = e.clientX;
-			var mouseY = e.clientY;
+			var mouseX = e.offsetX;
+			var mouseY = e.offsetY;
 
 			ctx.lineTo(mouseX,mouseY);
 			if(color == "Yellow"){
