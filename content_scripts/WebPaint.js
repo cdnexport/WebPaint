@@ -20,11 +20,6 @@
 
 	//Places the canvas element on the screen.
 	function createCanvas(){
-		var w = window,
-		    d = document,
-		    e = d.documentElement,
-		    g = d.getElementsByTagName('body')[0];
-
 		var canvas = document.createElement("canvas");
 
 		var height = window.getComputedStyle(document.getElementsByTagName('html')[0],null).getPropertyValue("Height");
