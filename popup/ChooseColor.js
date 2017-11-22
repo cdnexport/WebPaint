@@ -15,6 +15,7 @@ function listenForClicks(tabs) {
 	document.getElementById("yellow").addEventListener("click",selectColor);
 	document.getElementById("red").addEventListener("click",selectColor);
 	document.getElementById("black").addEventListener("click",selectColor);
+	document.getElementById("erase").addEventListener("click",selectColor);
 
 	document.getElementById("resetbutton").addEventListener("click",()=>{
 		reset=true;
@@ -29,8 +30,11 @@ function listenForClicks(tabs) {
 		else if(document.getElementById("red").checked){
 			color = "Red";
 		}
-		else{
+		else if(document.getElementById("black").checked){
 			color = "Black";
+		}
+		else if(document.getElementById("erase").checked){
+			color = "Erase";
 		}
 		enablePaint();
 	}
@@ -88,9 +92,13 @@ function listenForClicks(tabs) {
 				document.getElementById("red").checked = true;
 				color = "Red";
 			}
-			else{
+			else if(item.color=="Black"){
 				document.getElementById("black").checked = true;
 				color = "Black";
+			}
+			else if(item.color=="Erase"){
+				document.getElementById("erase").checked = true;
+				color = "Erase";
 			}
 		});
 	}

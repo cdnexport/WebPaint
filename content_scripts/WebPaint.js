@@ -78,10 +78,15 @@
 			else if(color == "Red"){
 				ctx.strokeStyle = '#ff0000';
 			}
-			else{
+			else if(color == "Black"){
 				ctx.strokeStyle = '#000000';
 			}
-			ctx.stroke();
+			else if(color == "Erase"){
+				ctx.clearRect(mouseX,mouseY,3,3);
+			}
+			if(color != "Erase"){
+				ctx.stroke();
+			}
 		}
 	}
 
