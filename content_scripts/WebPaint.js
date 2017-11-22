@@ -22,9 +22,9 @@
 	function createCanvas(){
 		var canvas = document.createElement("canvas");
 
-		var height = window.getComputedStyle(document.getElementsByTagName('html')[0],null).getPropertyValue("Height");
+		var height = window.getComputedStyle(document.getElementsByTagName('body')[0],null).getPropertyValue("Height");
 		var heightValue = computePageSize(height);
-		var width = window.getComputedStyle(document.getElementsByTagName('html')[0],null).getPropertyValue("Width");
+		var width = window.getComputedStyle(document.getElementsByTagName('body')[0],null).getPropertyValue("Width");
 		var widthValue = computePageSize(width);
 
 		canvas.width = widthValue;
